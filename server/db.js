@@ -17,6 +17,9 @@ module.exports = {
             // Get Global Promise
             mongoose.Promise = global.Promise
 
+            // Set the Strict Query
+            mongoose.set('strictQuery', false)
+
             // Set Options
             var __setOptions = mongoose.Query.prototype.setOptions;
 
