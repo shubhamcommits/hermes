@@ -6,12 +6,12 @@ npm run prod
 
 cd -
 
-mkdir sre-affair
+mkdir hermes
 
-rsync -av --progress $PWD/server/ $PWD/sre-affair/ --exclude node_modules --exclude files
+rsync -av --progress $PWD/server/ $PWD/hermes/ --exclude node_modules --exclude files
 
-scp -i "affair-system-server-key.cer" -r $PWD/sre-affair/ ubuntu@ec2-3-111-214-209.ap-south-1.compute.amazonaws.com:/home/ubuntu/
+scp -i "affair-system-server-key.cer" -r $PWD/hermes/ ubuntu@ec2-3-111-214-209.ap-south-1.compute.amazonaws.com:/home/ubuntu/
 
-rm -rf $PWD/sre-affair/
+rm -rf $PWD/hermes/
 
 exit 0

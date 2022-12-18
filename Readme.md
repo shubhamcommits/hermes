@@ -11,6 +11,7 @@
 1. Installing and Running the Application
 2. Contribution rules
 3. Server deployment and run
+4. Docker Development
 
 ## 1. Installing and Running The App On Your Machine
 
