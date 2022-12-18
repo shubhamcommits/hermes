@@ -24,10 +24,8 @@ const {
     AuthRoutes,
     ApiRoutes,
     AppRoutes,
-    DataReckonRoutes,
     HealthCheckRoutes,
     JobRoutes,
-    SalesPortalRoutes,
     ServiceRoutes,
     UserRoutes
 } = require('./routes')
