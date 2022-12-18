@@ -1,7 +1,7 @@
 {
-  "name": "sre-automation-service",
+  "name": "hermes-server",
   "version": "1.0.0",
-  "description": "SRE Automation application",
+  "description": "Hermes System (Open-SaaS) Application Server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

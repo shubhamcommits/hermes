@@ -75,10 +75,8 @@ app.use(morgan('dev'))
 app.use('/api/v1/auths', AuthRoutes)
 app.use('/api/v1/apps', AppRoutes)
 app.use('/api/v1/custom-apis', ApiRoutes)
-app.use('/api/v1/data-reckons', DataReckonRoutes)
 app.use('/api/v1/health-checks', HealthCheckRoutes)
 app.use('/api/v1/jobs', JobRoutes)
-app.use('/api/v1/sales', SalesPortalRoutes)
 app.use('/api/v1/services', ServiceRoutes)
 app.use('/api/v1/users', UserRoutes)
 
@@ -100,7 +98,7 @@ app.all('*', (req, res, next) => {
 
 // Default Route
 app.use('/', (req, res, next) => {
-    res.status(200).json({ message: 'SRE Server is Working!' })
+    res.status(200).json({ message: 'Hermes server is working!' })
 })
 
 // Error handling middleware

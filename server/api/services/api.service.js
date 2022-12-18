@@ -1,11 +1,8 @@
-// Import Models
-const { Api, Job, Service } = require('../models')
-
 // Moment Module
 const moment = require('moment')
 
-// Axios Module
-const axios = require('axios')
+// Import Models
+const { Api, Service } = require('../models')
 
 // Import Auth Services
 const AuthService = require('./auth.service')
@@ -13,8 +10,8 @@ const AuthService = require('./auth.service')
 // Import Job Service
 const JobService = require('./job.service')
 
-// Import Data Reckon Service
-const DataReckonService = require('./data-reckon.service')
+// Import Helper Service
+const HelperService = require('./helper.service')
 
 // Api Service
 const ApiService = {
@@ -282,7 +279,7 @@ const ApiService = {
                         }
 
                         // Record the API response
-                        let response = await DataReckonService.callHttpApi(config)
+                        let response = await HelperService.callHttpApi(config)
 
                         // Set the Last Known Status of the API
                         let last_status = 'unknown'

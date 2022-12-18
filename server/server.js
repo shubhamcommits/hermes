@@ -88,7 +88,7 @@ const setUpExpressApplication = async () => {
 
             // Exposing the server to the desired port
             server.listen(port, host, async () => {
-                process.stdout.write(`\n SRE Automation Server : http://${host}:${port}\n`)
+                process.stdout.write(`\n Hermes Server : http://${host}:${port}\n`)
                 process.stdout.write(`\n Environment : ${env}\n`)
                 process.stdout.write(`\n Process : ${process.pid} is listening to all incoming requests \n`)
             })
