@@ -1,0 +1,65 @@
+<mat-sidenav-container [ngClass]="{'dark-mode' : toggleButton}"  (backdropClick)="this.sidenav.toggle()" [hasBackdrop]="'false'">
+    <mat-sidenav #sidenav (keydown.escape)="this.sidenav.toggle()" disableClose autosize [mode]="'side'">
+
+        <!-- Side Bar Menu starts -->
+        <app-side-bar *ngIf="this.user" class="nav navbar-nav navbar-left" [user]="user" [sideNav]="sidenav">
+        </app-side-bar>
+        <!-- Side Bar Menu ends -->
+
+    </mat-sidenav>
+
+    <mat-sidenav-content style="height: 100vh;">
+        <mat-toolbar *ngIf="user">
+
+            <!-- Side Bar Navigation Toggle Starts -->
+            <button mat-icon-button (click)="this.sidenav.toggle()" matTooltip="Toggle Menu Drawer">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <!-- Side Bar Navigation Toggle Ends -->
+
+            <!-- SAS Logo -->
+            <span></span>
+            <!-- SAS Logo -->
+
+            <!-- Search Bar -->
+            <app-search-bar></app-search-bar>
+            <!-- Search Bar -->
+
+            <!-- Menu Bar -->
+            <!-- <app-menu-bar></app-menu-bar> -->
+            <!-- Menu Bar -->
+
+            <!-- Spacer -->
+            <span class="spacer"></span>
+            <!-- Spacer -->
+
+            <div class="flex-none">
+
+                <!-- User name branding -->
+                <button mat-raised-button class="user-details" matTooltip="Welcome to SAS" color="primary">
+                    <b>Welcome, {{ user?.first_name }}!</b>
+                </button>
+                <!-- User name branding -->
+
+                <button class="btn btn-ghost btn-circle" matTooltip="Change Theme" (click)="toggleDarkMode()">
+                    <mat-icon>dark_mode</mat-icon>
+                </button>
+                <!-- <button [ngIf]="toggleButton==true" change = "toggleDarkMode()"  class="btn btn-ghost btn-circle" matTooltip="Change Theme" (click)="toggleDarkMode()">
+                    <mat-icon>dark_mode</mat-icon>
+                </button> -->
+                <!-- (change)="onToggle()" -->
+                <!-- Logout section -->
+                <button class="btn btn-ghost btn-circle" matTooltip="Logout" (click)="logout()">
+                    <mat-icon>power_settings_new</mat-icon>
+                </button>
+                <!-- Logout section -->
+
+            </div>
+
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <router-outlet></router-outlet> -->

@@ -1,0 +1,48 @@
+<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <!-- Replace with your content -->
+    <div class="statistics px-4 py-6 sm:px-0">
+        <div class="stats shadow">
+            <div class="stat place-items-center">
+                <div class="stat-title">Total API Hits</div>
+                <div class="stat-value text-primary">25.6K</div>
+                <div class="stat-desc">21% more than last week</div>
+            </div>
+
+            <div class="stat place-items-center">
+                <div class="stat-title">Health Check</div>
+                <div class="stat-value text-secondary">2.6M</div>
+                <div class="stat-desc">32% more than last month</div>
+            </div>
+
+            <div class="stat place-items-center">
+                <div class="stat-title">Files Upload Success</div>
+                <div class="stat-value">86%</div>
+                <div class="stat-desc">31 tasks remaining</div>
+            </div>
+        </div>
+
+        <div class="stats shadow">
+            <div class="stat place-items-center">
+                <div class="stat-title">Reconciliation Status</div>
+                <div class="stat-value text-primary">+</div>
+                <div class="stat-desc">More Stable than last month</div>
+            </div>
+
+            <div class="stat place-items-center">
+                <div class="stat-title">Failed Impressions</div>
+                <div class="stat-value text-secondary">3.6K</div>
+                <div class="stat-desc">15% more than last month</div>
+            </div>
+
+            <div class="stat place-items-center">
+                <div class="stat-title">New Users</div>
+                <div class="stat-value">4.3K</div>
+                <div class="stat-desc">42% more than last quarter</div>
+            </div>
+        </div>
+    </div>
+    <div style="display: block;">
+        <canvas *ngIf="(isLoading$ | async)" baseChart [data]="chartData" [labels]="chartLabels" [legend]="true" [options]="chartOptions"  [type]="'bar'">
+        </canvas>
+    </div>
+</div>

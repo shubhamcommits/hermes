@@ -1,0 +1,71 @@
+<div>
+    <div style="display : flex; ">
+        <div class="left-style">
+            <img src="assets/pngs/profileImage_Female.webp" class="img">
+        </div>
+        <div class="right-style">
+            <h1 class="name-style"> Hello! &nbsp; <b>{{ user?.first_name }}</b>. &nbsp; Welcome Back</h1>
+            <div style="padding-left: 190px;
+            padding-top: 20px;">
+                <button class="btn">Edit your Profile ! </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bottom-style">
+        <form class="form-style">
+            <div style="display: flex; padding : 5px;">
+                <div class="left-div">
+                    <p class="colorClass">FIRST NAME</p> 
+                    <div class="text-style"><p>{{user?.first_name}}</p></div>
+                </div>
+                
+                <div class="left-div">
+                    <p class="colorClass">LAST NAME</p> 
+                    <div class="text-style"><p>{{user?.last_name}}</p></div>
+                </div>
+                
+            </div>
+
+            <div style="display: flex; padding : 5px;">
+                <div class="left-div">
+                    <p class="colorClass">EMAIL</p> 
+                    <div class="text-style"><p>{{user?.email}}</p></div>
+                </div>
+                
+                <div class="left-div">
+                    <p class="colorClass">PASSWORD</p> 
+                    <div class="text-style"><p>********</p></div>
+                    <!-- {{user?.password}} -->
+                </div>
+                
+            </div>
+
+            <div style="display: flex; padding : 5px;">
+                <div class="left-div">
+                    <p class="colorClass">STATUS</p> 
+                    <div class="text-style"><p>{{user?.active}}</p></div>
+                </div>
+                
+                <div class="left-div">
+                    <p class="colorClass">DATE OF JOINING</p> 
+                    <div class="text-style"><p>{{user?.created_date | date:'medium'}}</p></div>
+                </div>
+                
+            </div>
+            
+            <div style="display: flex; padding : 5px;">
+                <div style="width: 100%; margin: 5px;  margin-bottom: 20px;" >
+                    <p class="colorClass">ROLE OF USER</p> 
+                    <div style="height: 42%;
+                    width: 50%;padding-top: 7px; border-radius: 4px;" class="text-style"><p>{{user?.role}}</p></div>
+                </div>
+                
+                
+            </div>
+           
+           
+        </form>
+    </div>
+</div>

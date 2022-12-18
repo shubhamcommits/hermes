@@ -1,0 +1,30 @@
+<nav>
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="hidden sm:ml-6 sm:block">
+                    <div class="flex space-x-4">
+                        <a class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                            [routerLink]="['/dashboard', 'home']">
+                            <mat-icon>home</mat-icon>
+                            Home
+                        </a>
+
+                        <a [routerLink]="['/saas', 'projects', 'all']"
+                        class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        <mat-icon>article</mat-icon>
+                        Projects</a>
+
+                        <a [routerLink]="['/saas', 'projects', 'all']"
+                            class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                            <mat-icon>settings</mat-icon>
+                            Settings</a>
+
+                        <!-- <a [routerLink]="['/dashboard', 'health-check', 'apps']"
+                            class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

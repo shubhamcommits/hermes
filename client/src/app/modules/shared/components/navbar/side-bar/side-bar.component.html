@@ -1,0 +1,81 @@
+<nav id="sidebar" *ngIf="!checkEmptyObject(user)">
+
+    <!-- Sidebar Header starts -->
+    <div class="sidebar-header">
+        <a [routerLink]="['/dashboard', 'myspace', 'inbox']" routerLinkActive="router-link-active"
+            (click)="this.sideNav.toggle()">
+        </a>
+        <div id="dismiss">
+            <i class="material-icons" (click)="this.sideNav.toggle()">menu_open</i>
+        </div>
+    </div>
+    <!-- Sidebar Header ends -->
+
+    <div class="menu-options">
+        <ul class="list-unstyled components">
+            <li>
+                <a class="inline-block py-3 px-3 rounded-lg" [routerLink]="['/dashboard', 'home']">
+                    <mat-icon>dashboard</mat-icon>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a class="inline-block py-3 px-3 rounded-lg" [routerLink]="['/saas', 'projects', 'all']"
+                    routerLinkActive="router-link-active">
+                    <mat-icon>apps</mat-icon>
+                    Automations
+                </a>
+            </li>
+            <li>
+                <a class="inline-block py-3 px-3 rounded-lg" [routerLink]="['/saas', 'projects', 'all']"
+                    routerLinkActive="router-link-active">
+                    <mat-icon>build</mat-icon>
+                    Reconciliation
+                </a>
+            </li>
+            <li>
+                <a class="inline-block py-3 px-3 rounded-lg" [routerLink]="['/health-check', 'apps']"
+                    routerLinkActive="router-link-active">
+                    <mat-icon>health_and_safety</mat-icon>
+                    Health Checks
+                </a>
+            </li>
+            <li>
+                <a class="inline-block py-3 px-3 rounded-lg" [routerLink]="['/health-check', 'apps']"
+                    routerLinkActive="router-link-active">
+                    <mat-icon>assignment_turned_in</mat-icon>
+                    Global Board
+                </a>
+            </li>
+        </ul>
+        <hr>
+
+        <ul class="list-unstyled">
+            <li>
+                <a class="inline-block py-3 px-3 rounded-lg" [routerLink]="['/dashboard', 'notifications']">
+                    <mat-icon>notifications</mat-icon> My Notifications
+                </a>
+            </li>
+            <li> <a class="inline-block py-3 px-3 rounded-lg" [routerLink]="['/dashboard', 'notifications']">
+                    <mat-icon>settings</mat-icon> Settings & Privacy
+                </a>
+            <li>
+                <a class="inline-block py-3 px-3 rounded-lg"[routerLink]="['/dashboard', 'notifications']">
+                    <mat-icon>help</mat-icon> Help & Support
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+    <div class="sidebar-footer">
+        <ul class="list-unstyled">
+            <li>
+                <a class="inline-block py-3 px-3 rounded-lg" [routerLink]="['/user', 'home']">
+                    <mat-icon>person</mat-icon>
+                     My Account
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

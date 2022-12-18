@@ -1,0 +1,72 @@
+<mat-dialog-actions class="mb-2">
+    <h2 mat-dialog-title>Define API</h2>
+    <button (click)="close()" matTooltip="Close Modal"
+        class="rounded-lg btn-square text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800">
+        <mat-icon>cancel</mat-icon>
+    </button>
+</mat-dialog-actions>
+<mat-dialog-content>
+    <form class="mt-2" [formGroup]="form" (submit)="createApi()">
+        <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Please provide your API Name" formControlName="name">
+            <mat-error *ngIf="!name.valid && name.touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Method</mat-label>
+            <mat-select [(value)]="method" formControlName="method">
+                <mat-option value="GET">GET</mat-option>
+                <mat-option value="POST">POST</mat-option>
+                <mat-option value="PUT">PUT</mat-option>
+                <mat-option value="DELETE">DELETE</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!method.valid && method.touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Opco</mat-label>
+            <mat-select [(value)]="opco" formControlName="opco">
+                <mat-option value="CG">Congo - CG</mat-option>
+                <mat-option value="GA">Gabon - GA</mat-option>
+                <mat-option value="KE">Kenya - KE</mat-option>
+                <mat-option value="MG">Madagascar - MG</mat-option>
+                <mat-option value="MW">Malawi - MW</mat-option>
+                <mat-option value="NE">Niger - NE</mat-option>
+                <mat-option value="NG">Nigeria - NG</mat-option>
+                <mat-option value="NGPSB">NGPSB</mat-option>
+                <mat-option value="RW">Rawanda - RW</mat-option>
+                <mat-option value="SC">Seychelles - SC</mat-option>
+                <mat-option value="TD">Chad - TD</mat-option>
+                <mat-option value="TZ">Tanzania - TZ</mat-option>
+                <mat-option value="UG">Uganda - UG</mat-option>
+                <mat-option value="ZM">Zambia - ZM</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!opco.valid && opco.touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>End Point</mat-label>
+            <input matInput placeholder="Please fill the end-point of the API" formControlName="end_point">
+            <mat-error *ngIf="!end_point.valid && end_point.touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Authorization from UM?</mat-label>
+            <mat-select [(value)]="authorization_via_um" formControlName="authorization_via_um">
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!authorization_via_um.valid && authorization_via_um.touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+
+        <button class="save-button text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add to Scheduler!</button>
+
+    </form>
+</mat-dialog-content>

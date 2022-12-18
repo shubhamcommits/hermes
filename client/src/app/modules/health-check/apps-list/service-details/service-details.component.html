@@ -1,0 +1,97 @@
+<ng-container *ngIf="!(isLoading$ | async)">
+
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="statistics px-4 py-6 sm:px-0">
+            <div class="stats shadow">
+                <div class="stat place-items-center">
+                    <div class="stat-title">Total APIs</div>
+                    <div class="stat-value text-primary">{{ data.length || 0 }}</div>
+                    <!-- <div class="stat-desc">2 new APIs were added this week</div> -->
+                </div>
+
+                <div class="stat place-items-center">
+                    <div class="stat-title">Failed Impressions</div>
+                    <div class="stat-value text-secondary">{{ failed_api_count || 0 }}</div>
+                    <!-- <div class="stat-desc">15% more than last month</div> -->
+                </div>
+
+                <div class="stat place-items-center">
+                    <div class="stat-title">Success Rate</div>
+                    <div class="stat-value text-secondary">{{ success_rate || 0 }}%</div>
+                    <!-- <div class="stat-desc">Nigeria</div> -->
+                </div>
+
+                <div class="stat place-items-center">
+                    <div class="stat-title">Service Status</div>
+                    <div *ngIf="service?.last_status == 'healthy'" class="stat-value text-success">+</div>
+                    <div *ngIf="service?.last_status == 'unhealthy'" class="stat-value text-warning">-</div>
+                    <div *ngIf="service?.last_status == 'unknown'" class="stat-value text-warning">-</div>
+                    <div *ngIf="service?.last_status == 'broken'" class="stat-value text-error">o</div>
+                    <!-- <div class="stat-desc">32% more than last month</div> -->
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-6 mb-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
+            <div class="card w-96 text-dark">
+                <div class="card-body">
+                    <h2 class="card-title">Base Environment</h2>
+                    <p><b>Service Name:</b> {{ service?.name }}</p>
+                    <p><b>App Name:</b> {{ service?._app?.name }}</p>
+                    <div class="card-actions justify-center">
+                        <button
+                            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit
+                            Configuration</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-96 text-dark">
+                <div class="card-body">
+                    <h2 class="card-title">Scheduler Details</h2>
+                    <p><b>Threshold:</b>  {{ service?.threshold || 0 }}</p>
+                    <p><b>Health:</b> {{ service?.last_status }}</p>
+                    <div class="card-actions justify-center">
+                        <button
+                            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Configure</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-96 text-dark">
+                <div class="card-body">
+                    <h2 class="card-title">API Metrics</h2>
+                    <mat-form-field class="full-width">
+                        <mat-label>Graph</mat-label>
+                        <mat-select [value]="'line-chart'">
+                            <mat-option value="line-chart">Line Chart</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="card-actions justify-center">
+                        <!-- Time Series Graph -->
+                        <!-- <app-custom-line-graph *ngIf="data.length > 0" [width]="300" [height]="300" [data]="chartData"
+                            [labels]="chartLabels" [legendNames]="chartLegends">
+                        </app-custom-line-graph> -->
+
+                        <!-- <app-doughnut-graph *ngIf="chartData.length > 0" [data]="chartData"></app-doughnut-graph> -->
+                        <!-- Time Series Graph -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <app-create-api (newApi)="newApi($event)"></app-create-api>
+    </div>
+
+    <ng-container *ngIf="data.length === 0">
+        <h1 class="loading-placeholder-header">No Results ...</h1>
+        <img class="loading-placeholder" src="assets/svgs/no_results.svg">
+    </ng-container>
+
+    <app-common-table *ngIf="data.length > 0" [data]="data" [columns]="columns" (row)="apiRowData($event)"> </app-common-table>
+
+</ng-container>

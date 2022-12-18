@@ -1,0 +1,70 @@
+ // New Toster CSS
+
+  .toast-msg {
+    width: 100%;
+    position: fixed;
+    height: 50px;
+    z-index: 100000;
+    color: white;
+    top: 0;
+    left: 0;
+    animation: move 2s both;
+    display: flex;
+    justify-content: space-between;
+    padding:0 20px;
+    p{
+      margin:0;
+      display: flex;
+      justify-content: center;
+      line-height: 50px;
+      margin:0 auto;
+      max-width: 90%;
+      text-align: center;
+      span{
+        font-weight: bold;
+        margin-right: 8px;
+      }
+    }
+    h4{
+      position: absolute;
+      right: 16px;
+      top:12px;
+      font-size: 20px;
+      color:#fff;
+      cursor: pointer;
+    }
+  }
+  
+  .toast-success {
+    background-color: #0AAF69;
+  }
+  
+  .toast-error {
+    background-color: #ED1C24;
+  }
+  
+  .toast-warning {
+    background-color:orange;
+  }
+  
+  @keyframes move {
+  
+  from {
+  transform: translateY(100%);
+  }
+  to {
+  transform: translateY(0);
+  }
+  }
+  .close {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  .toast-heading {
+    margin-top: 10px;
+  }
+  
+  

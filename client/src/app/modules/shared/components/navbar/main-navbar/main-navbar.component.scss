@@ -1,0 +1,86 @@
+.spacer{
+    flex: 1 1 auto;
+}
+
+.tabs{
+    margin: 1%;
+    outline: none;
+}
+
+.tabs:hover{
+    background-color: #0052CC;
+    color: white;
+}
+
+.user-details{
+    background-color: #0052CC;
+    border-radius: 10px;
+    margin: 1%;
+    outline: none;
+    letter-spacing: 2px;
+}
+
+
+
+  
+.dark-mode {
+    background-color: #2c3132 !important;
+    color: #ffffff !important;
+  }
+  
+.light-mode {
+    background-color: #dfe6e9 !important;
+    color: #2d3436 !important;
+  }
+
+
+mat-toolbar{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !important;
+}
+
+input{
+    cursor: pointer;
+}
+
+.arrow{
+    margin-left: 1% !important;
+    cursor: pointer;
+}
+.arrow-back{
+    cursor: pointer;
+}
+
+mat-datepicker-toggle{
+    visibility: hidden;
+}
+
+.slideshow{
+    cursor: pointer;
+    color: #28a745;
+}
+
+.slideshow-stop{
+    cursor: pointer;
+    color: #ce1212;
+}
+
+mat-date-range-input, .slideshow-input{
+    visibility: hidden !important;
+    display: none !important;
+}
+
+mat-select{
+    margin-left: 1%;
+    font-size: 14px;
+    width: 7%;
+}
+
+app-search-bar {
+    margin: 1% !important;
+}
+
+app-menu-bar {
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+}

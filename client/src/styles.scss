@@ -1,0 +1,214 @@
+// Custom Theming for Angular Material
+@use '@angular/material' as mat;
+
+// Import Colors
+@import 'assets/scss/colors.scss';
+
+// Tailwind CSS
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+// Original Surfer Font
+// @import url("https://fonts.googleapis.com/css?family=Original Surfer");
+
+// Import Themeing
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+// Primary Color - #000000
+$client-primary: (
+  50 : #e0e0e0,
+  100 : #b3b3b3,
+  200 : #808080,
+  300 : #4d4d4d,
+  400 : #262626,
+  500 : #000000,
+  600 : #000000,
+  700 : #000000,
+  800 : #000000,
+  900 : #000000,
+  A100 : #a6a6a6,
+  A200 : #8c8c8c,
+  A400 : #737373,
+  A700 : #666666,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+// Paradise Pink - #EF476F
+$client-paradise-pink : (50 : #fde9ee,
+  100 : #fac8d4,
+  200 : #f7a3b7,
+  300 : #f47e9a,
+  400 : #f16385,
+  500 : #ef476f,
+  600 : #ed4067,
+  700 : #eb375c,
+  800 : #e82f52,
+  900 : #e42040,
+  A100 : #ffffff,
+  A200 : #ffe8eb,
+  A400 : #ffb5c0,
+  A700 : #ff9caa,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  ));
+
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$client-theme: mat.define-light-theme((color: (primary: mat-palette($client-primary),
+        accent: mat-palette($client-primary),
+        warn: mat-palette($client-paradise-pink),
+      )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($client-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Material Icon
+mat-icon {
+  vertical-align: middle !important;
+}
+
+.same-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.loading-placeholder-header {
+  font-family: 'Original Surfer' !important;
+  font-size: 40px;
+  font-weight: bold !important;
+  letter-spacing: 1px !important;
+  color: $sas-blue !important;
+  font-weight: bold !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 2rem !important;
+}
+
+.loading-placeholder {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 50% !important;
+  max-height: 50% !important;
+  margin-top: 2rem !important;
+}
+
+.mat-blue-ryb {
+  background-color: $sas-blue !important;
+  color: $sas-text-color !important;
+}
+
+mat-spinner {
+  display: flex !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+}
+
+// Avatar Image
+.feed-avatar {
+  width: 100px;
+  height: 150px;
+  border-radius: 50%;
+  transform: scale(.75, .5);
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.feed-avatar:hover {
+  transform: scale(0.9, 0.6);
+}
+
+.mat-snack-bar-container {
+  text-align: center;
+}
+
+.mat-simple-snackbar {
+  display: inline-block !important;
+}
+
+.black-snackbar {
+  background: $sas-background-color;
+  color: $sas-text-color;
+}
+
+.main-container {
+  padding: 20px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.material-icons {
+  vertical-align: middle !important;
+}
+
+.modal-class {
+  mat-dialog-container {
+    border-radius: 30px !important;
+  }
+}
+
+.dark-mode {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+.light-mode {
+  background-color: #dfe6e9 !important;
+  color: #2d3436 !important;
+}

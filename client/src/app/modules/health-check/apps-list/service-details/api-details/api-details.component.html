@@ -1,0 +1,85 @@
+<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <mat-dialog-actions class="mb-2 mt-4">
+        <!-- <h2 mat-dialog-title><u>API Details</u></h2> -->
+        <button *ngIf="api?.last_status == 'healthy'"
+            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Healthy</button>
+        <button *ngIf="api?.last_status == 'unhealthy'"
+            class="text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Unhealthy</button>
+        <button *ngIf="api?.last_status == 'broken'"
+            class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Broken</button>
+        <button *ngIf="api?.last_status == 'unknown'"
+            class="text-white bg-gradient-to-r from-gray-500 via-gray-600 to-gray-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Unknown</button>
+        <button matTooltip="Remove API" (click)="removeApp(apiId)"
+            class="rounded-lg btn-square text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-dialog-actions>
+
+    <ng-container *ngIf="!(isLoading$ | async)">
+        <div class="mt-6 mb-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
+            <div class="card w-96 text-dark">
+                <div class="card-body">
+                    <h2 class="card-title">Environment</h2>
+                    <p><b>Authorization from UM:</b>
+                        <mat-slide-toggle [checked]="api?.authorization_from_um"></mat-slide-toggle>
+                    </p>
+                    <p><b>Status:</b>
+                        <mat-slide-toggle [checked]="api?.active" (change)="changeApiStatus($event)"></mat-slide-toggle>
+                    </p>
+                    <p><b>Time Interval:</b> {{ api?.time_interval }}</p>
+                    <p><b>Last Run:</b> {{api?.last_run_time | date: 'medium' }}</p>
+                    <p><b>Created Date:</b> {{api?.created_date | date: 'medium' }}</p>
+                    <div class="card-actions justify-center">
+                        <button
+                            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Configure</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-96 text-dark">
+                <div class="card-body">
+                    <h2 class="card-title">Scheduler Details</h2>
+                    <p><b>Name:</b> {{api?.name}}</p>
+                    <p><b>Method:</b> {{ api?.method }}</p>
+                    <p><b>Opco:</b> {{ api?.opco }}</p>
+                    <p><b>End Point:</b> {{ api?.end_point }}</p>
+                    <p><b>Headers:</b> {{api?.headers | json }}</p>
+                    <p><b>Body:</b> {{api?.body | json }}</p>
+                    <div class="card-actions justify-center">
+                        <button
+                            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Configure</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-96 text-dark">
+                <div class="card-body">
+                    <h2 class="card-title">API Metrics</h2>
+                    <mat-form-field class="full-width">
+                        <mat-label>Graph</mat-label>
+                        <mat-select [value]="'line-chart'">
+                            <mat-option value="line-chart">Line Chart</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="card-actions justify-center">
+
+                        <!-- Time Series Graph -->
+                        <app-custom-line-graph *ngIf="api.response.length > 0" [width]="300" [height]="300"
+                            [data]="chartData" [labels]="chartLabels" [legendNames]="chartLegends">
+                        </app-custom-line-graph>
+                        <!-- Time Series Graph -->
+                        <!-- <button
+                            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">View
+                            Metrics</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<!-- <ng-container *ngIf="api.length === 0">
+    <h1 class="loading-placeholder-header">No Results ...</h1>
+    <img class="loading-placeholder" src="assets/svgs/no_results.svg">
+</ng-container> -->
+<ng-container *ngIf="!(isLoading$ | async)">
+    <app-common-table [title]="'Responses'" [data]="api.response" [columns]="columns"></app-common-table>
+</ng-container>

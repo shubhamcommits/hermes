@@ -1,0 +1,76 @@
+<div class="navbar bg-base-100 rounded-xl drop-shadow-xl">
+
+  <div class="navbar-start">
+      <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
+          <li class="mr-1">
+              <a class="inline-block py-3 px-4 rounded-lg active" [routerLink]="['/dashboard', 'home']">
+                  <mat-icon>dashboard</mat-icon>
+                  Dashboard
+              </a>
+          </li>
+          <li class="mr-1">
+              <a class="inline-block py-3 px-4 rounded-lg" [routerLink]="['/saas', 'projects', 'all']"
+                  routerLinkActive="router-link-active">
+                  <mat-icon>apps</mat-icon>
+                  Automations
+              </a>
+          </li>
+          <li class="mr-1">
+              <a class="inline-block py-3 px-4 rounded-lg" [routerLink]="['/saas', 'projects', 'all']"
+                  routerLinkActive="router-link-active">
+                  <mat-icon>build</mat-icon>
+                  Reconciliation
+              </a>
+          </li>
+          <li class="mr-1">
+              <a class="inline-block py-3 px-4 rounded-lg" [routerLink]="['/dashboard', 'health-check', 'apps']"
+                  routerLinkActive="router-link-active">
+                  <mat-icon>health_and_safety</mat-icon>
+                  Health Checks
+              </a>
+          </li>
+      </ul>
+    </div>
+  <div class="flex-none">
+
+      <button class="btn btn-ghost btn-circle">
+          <mat-icon>grid_view</mat-icon>
+      </button>
+
+      <button class="btn btn-ghost btn-circle">
+          <mat-icon>search</mat-icon>
+      </button>
+
+      <div class="indicator">
+          <button class="btn btn-ghost btn-circle">
+              <mat-icon>notifications</mat-icon>
+          </button>
+      </div>
+
+      <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+          </label>
+          <ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <li>
+                  <a>
+                      <mat-icon>person</mat-icon> Your Account
+                  </a>
+              </li>
+              <li> <a>
+                      <mat-icon>settings</mat-icon> Settings & Privacy
+                  </a>
+              <li>
+                  <a>
+                      <mat-icon>help</mat-icon> Help & Support
+                  </a>
+              </li>
+              <li>
+                  <button (click)="logout()">
+                      <mat-icon>power_settings_new</mat-icon> Logout
+                  </button>
+              </li>
+          </ul>
+      </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
